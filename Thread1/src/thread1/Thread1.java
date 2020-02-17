@@ -5,6 +5,8 @@
  */
 package thread1;
 
+import java.util.Scanner;
+
 /**
  *
  * @author pogliani.mattia
@@ -14,7 +16,7 @@ public class Thread1 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 //        T t = new T('a');
 //        t.start();
 //        T t2 = new T('b');
@@ -27,10 +29,32 @@ public class Thread1 {
 //        R r2 = new R('d');
 //        Thread t4 = new Thread(r2);
 //        t4.start();
+
+//        Contatore cont = new Contatore();
+//        RS r1 = new RS("thread111", cont);
+//        RS r2 = new RS("thread222", cont);
+        System.out.print("inserisci saldo iniziale:");
+        Scanner in = new Scanner(System.in);
+        int saldoIniziale = Integer.parseInt(in.nextLine());
+        ContoCorrente conto = new ContoCorrente(saldoIniziale);
+        ThreadBanca T = new ThreadBanca("cliente1" , conto);
         
-        Contatore cont = new Contatore();
-        RS r1 = new RS("thread111", cont);
-        RS r2 = new RS("thread222", cont);
+        while(true){
+            System.out.println("1 - preleva\n2 - deposita");
+            switch(in.nextLine()){
+                case "2":
+                    System.out.println("quanto vuoi depositare?");
+                    T.versa(Integer.parseInt(in.nextLine()));
+                    break;
+                    
+                case "1":
+                    System.out.println("quanto vuoi prelevare?");
+                    T.preleva(Integer.parseInt(in.nextLine()));
+                    break;                
+            }
+        }
+        
+        //in.close();
     }
-    
+
 }
