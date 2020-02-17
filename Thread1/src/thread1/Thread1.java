@@ -44,12 +44,12 @@ public class Thread1 {
             switch(in.nextLine()){
                 case "2":
                     System.out.println("quanto vuoi depositare?");
-                    T.versa(Integer.parseInt(in.nextLine()));
+                    T.versa(in.nextFloat());
                     break;
                     
                 case "1":
                     System.out.println("quanto vuoi prelevare?");
-                    T.preleva(Integer.parseInt(in.nextLine()));
+                    T.preleva(in.nextFloat());
                     break;                
             }
         }
