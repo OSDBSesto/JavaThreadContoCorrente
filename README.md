@@ -1,2 +1,2 @@
 # Thread1
-First exercises about Java Thread
+First exercise about Java Thread done in the laboratory
